@@ -19,6 +19,7 @@ export class RbCheckboxes extends FormControl(RbBase()) {
 	 *************/
 	static get props() { // :object
 		return {
+			...super.props,
 			kind: props.string
 		};
 	}
