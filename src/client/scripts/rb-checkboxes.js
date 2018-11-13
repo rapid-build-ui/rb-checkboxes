@@ -3,7 +3,7 @@
  ****************/
 import { props, html, RbBase } from '../../rb-base/scripts/rb-base.js';
 import FormControl from '../../form-control/scripts/form-control.js';
-import '../../rb-icon/scripts/rb-checkbox.js';
+import '../../rb-checkbox/scripts/rb-checkbox.js';
 import template from '../views/rb-checkboxes.html';
 
 export class RbCheckboxes extends FormControl(RbBase()) {
