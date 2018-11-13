@@ -3,6 +3,7 @@
  ****************/
 import { props, html, RbBase } from '../../rb-base/scripts/rb-base.js';
 import FormControl from '../../form-control/scripts/form-control.js';
+import Type from '../../rb-base/scripts/type-service.js';
 import '../../rb-checkbox/scripts/rb-checkbox.js';
 import template from '../views/rb-checkboxes.html';
 
@@ -11,8 +12,10 @@ export class RbCheckboxes extends FormControl(RbBase()) {
 	 ************/
 	viewReady() { // :void
 		super.viewReady && super.viewReady();
-		// this.rb.elms.focusElm = this.shadowRoot.querySelector('input');
-		// this.rb.elms.formControl = this.rb.elms.focusElm
+		Object.assign(this.rb.elms, {
+			focusElm:    this.shadowRoot.querySelector('rb-checkbox'),
+			formControl: this.shadowRoot.querySelector('input')
+		});
 	}
 
 	/* Properties
@@ -20,8 +23,31 @@ export class RbCheckboxes extends FormControl(RbBase()) {
 	static get props() { // :object
 		return {
 			...super.props,
-			kind: props.string
+			horizontal: props.boolean,
+			inline: props.boolean,
+			label: props.string, // checkboxes label
+			labelKey: props.string, // checkbox label
+			right: props.boolean,
+			stacked: props.boolean, // TODO: change default to unstacked
+			subtext: props.string,
+			toggle: props.boolean,
+			value: props.array,
+			data: Object.assign({}, props.array, {
+				deserialize(val) { // :array
+					if (Type.is.array(val)) return val;
+					if (!Type.is.string(val)) return val;
+					val = val.trim();
+					if (/^\[[^]*\]$/.test(val)) return JSON.parse(val);
+					return val;
+				}
+			}),
 		};
+	}
+
+	/* Event Handlers
+	 *****************/
+	_onclick(item, evt) { // :void (TODO: fix from firing twice)
+		console.log(item);
 	}
 
 	/* Template
