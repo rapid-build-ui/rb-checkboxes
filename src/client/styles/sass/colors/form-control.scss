@@ -1,0 +1,32 @@
+/**********************
+ * FORM CONTROL COLORS
+ **********************/
+$formControlColors: (
+	text: (
+		invalid: (
+			default: mapGet($palette, redDark)
+		),
+		subtext: (
+			default: mapGet($palette, blueGreyLight)
+		),
+		checkboxesLabel: (
+			default: mapGet($palette, xxGreyDark)
+		)
+	),
+	bg: (
+		active: (
+			default: mapGet($palette, blueDark)
+		),
+		invalid: (
+			default: mapGet($palette, redDark)
+		)
+	),
+	borders: (
+		active: (
+			default: mapGet($palette, blueDark)
+		),
+		invalid: (
+			default: mapGet($palette, redDark)
+		)
+	)
+);

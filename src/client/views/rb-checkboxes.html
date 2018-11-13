@@ -1,3 +1,39 @@
-rb-checkboxes
+<div
+	?disabled="${props.disabled}"
+	class="
+		rb-checkboxes
+		${props.horizontal ? 'horizontal' : ''}
+		${props.inline ? 'inline' : ''}
+		${props.right ? 'right' : ''}
+		${props.stacked ? 'stacked' : ''}
+		${props._valid ? 'valid' : 'invalid'}
+	">
+
+	${props.label
+		? html`<label class="checkboxes-label">${props.label}</label>`
+		: null
+	}
+
+	<div class="checkboxes-wrap">
+		${props.data.map((item, i) => html`
+			<rb-checkbox
+				sublabel="${item}"
+				value="${props.value.includes(item)}"
+				@click="${this._onclick.bind(this, item)}">
+			</rb-checkbox>
+		`)}
+		<input
+			hidden
+			type="text"
+			tabindex="-1"
+			name="${props.name}"
+			.value="${props.value}">
+	</div>
+
+	${props._eMsg || props.subtext
+		? html`<span class="subtext">${props._eMsg || props.subtext}</span>`
+		: null
+	}
+</div>
 
 <link rel="stylesheet" href="../styles/rb-checkboxes.css">
