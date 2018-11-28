@@ -32,22 +32,29 @@ export class RbCheckboxes extends FormControl(RbBase()) {
 			subtext: props.string,
 			toggle: props.boolean,
 			value: props.array,
-			data: Object.assign({}, props.array, {
-				deserialize(val) { // :array
-					if (Type.is.array(val)) return val;
-					if (!Type.is.string(val)) return val;
-					val = val.trim();
-					if (/^\[[^]*\]$/.test(val)) return JSON.parse(val);
-					return val;
-				}
-			}),
+			data: props.array
 		};
 	}
 
 	/* Event Handlers
 	 *****************/
-	_onclick(item, evt) { // :void (TODO: fix from firing twice)
-		console.log(item);
+	async _onchange(item, index, evt) { // :void
+		const checked = evt.target.value;
+
+		if (checked) {
+			if (!this.value.length)
+				this.value = [].concat(item);
+			else
+				this.value.splice(index, 0, item);
+			// console.log('ADD:', this.value);
+			await this.validate();
+			return;
+		}
+
+		const _index = this.value.indexOf(item);
+		this.value.splice(_index, 1);
+		// console.log('REMOVE:', this.value);
+		await this.validate();
 	}
 
 	/* Template
