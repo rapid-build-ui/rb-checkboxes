@@ -17,6 +17,8 @@
 	<div class="checkboxes-wrap">
 		${props.data.map((item, i) => html`
 			<rb-checkbox
+				?right="${props.right}"
+				?inline="${props.horizontal}"
 				value="${props.value.includes(item)}"
 				@change="${this._onchange.bind(this, item, i)}"
 				sublabel="${props.labelKey && typeof props.data[0] === 'object'

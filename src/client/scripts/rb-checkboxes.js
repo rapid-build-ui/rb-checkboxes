@@ -31,9 +31,34 @@ export class RbCheckboxes extends FormControl(RbBase()) {
 			stacked: props.boolean, // TODO: change default to unstacked
 			subtext: props.string,
 			toggle: props.boolean,
-			value: props.array,
-			data: props.array
+			data: Object.assign({}, props.array, {
+				deserialize(val) { // :array
+					val = Type.is.string(val) ? val.trim() : val;
+					return /^\[[^]*\]$/.test(val) ? JSON.parse(val) : [];
+				}
+			}),
+			value: Object.assign({}, props.array, {
+				deserialize(val) { // :array
+					val = Type.is.string(val) ? val.trim() : val;
+					return /^\[[^]*\]$/.test(val) ? JSON.parse(val) : [];
+				}
+			})
 		};
+	}
+
+	/* Observer
+	 ***********/
+	updating(prevProps) { // :void
+		if (prevProps.value === this.value) return;
+		this.rb.events.emit(this, 'value-changed', {
+			detail: { value: this.value }
+		});
+	}
+
+	emitValueChange() {
+		this.rb.events.emit(this, 'value-changed', {
+			detail: { value: this.value }
+		});
 	}
 
 	/* Event Handlers
@@ -47,6 +72,7 @@ export class RbCheckboxes extends FormControl(RbBase()) {
 			else
 				this.value.splice(index, 0, item);
 			// console.log('ADD:', this.value);
+			// this.emitValueChange()
 			await this.validate();
 			return;
 		}
@@ -54,6 +80,7 @@ export class RbCheckboxes extends FormControl(RbBase()) {
 		const _index = this.value.indexOf(item);
 		this.value.splice(_index, 1);
 		// console.log('REMOVE:', this.value);
+		// this.emitValueChange()
 		await this.validate();
 	}
 
