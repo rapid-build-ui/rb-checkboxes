@@ -1,7 +1,7 @@
 <div
 	?disabled="${props.disabled}"
 	class="
-		rb-checkboxes
+		form-control
 		${props.horizontal ? 'horizontal' : ''}
 		${props.inline ? 'inline' : ''}
 		${props.right ? 'right' : ''}
@@ -10,15 +10,16 @@
 	">
 
 	${props.label
-		? html`<label class="checkboxes-label">${props.label}</label>`
+		? html`<label class="label">${props.label}</label>`
 		: null
 	}
 
-	<div class="checkboxes-wrap">
+	<div class="checkboxes">
 		${props.data.map((item, i) => html`
 			<rb-checkbox
 				?right="${props.right}"
 				?inline="${props.horizontal}"
+				?disabled="${props.disabled}"
 				value="${props.value.includes(item)}"
 				@change="${this._onchange.bind(this, item, i)}"
 				sublabel="${props.labelKey && typeof props.data[0] === 'object'
