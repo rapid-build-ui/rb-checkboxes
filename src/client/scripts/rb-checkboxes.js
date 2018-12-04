@@ -16,7 +16,6 @@ export class RbCheckboxes extends FormControl(RbBase()) {
 			focusElm:    this.shadowRoot.querySelector('rb-checkbox'),
 			formControl: this.shadowRoot.querySelector('input')
 		});
-		this.emitValueChange(); // TODO: look into this
 	}
 
 	/* Properties
@@ -49,7 +48,8 @@ export class RbCheckboxes extends FormControl(RbBase()) {
 
 	/* Observer
 	 ***********/
-	emitValueChange() {
+	updating(prevProps) { // :void
+		// if (prevProps.value === this.value) return; // TODO: investigate
 		this.rb.events.emit(this, 'value-changed', {
 			detail: { value: this.value }
 		});
@@ -70,7 +70,7 @@ export class RbCheckboxes extends FormControl(RbBase()) {
 			this.value.splice(_index, 1);
 			// console.log('REMOVE:', this.value);
 		}
-		this.emitValueChange()
+		this.triggerUpdate();
 		await this.validate();
 	}
 
