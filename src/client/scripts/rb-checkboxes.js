@@ -16,6 +16,7 @@ export class RbCheckboxes extends FormControl(RbBase()) {
 			focusElm:    this.shadowRoot.querySelector('rb-checkbox'),
 			formControl: this.shadowRoot.querySelector('input')
 		});
+		this.emitValueChange(); // TODO: look into this
 	}
 
 	/* Properties
@@ -48,13 +49,6 @@ export class RbCheckboxes extends FormControl(RbBase()) {
 
 	/* Observer
 	 ***********/
-	updating(prevProps) { // :void
-		if (prevProps.value === this.value) return;
-		this.rb.events.emit(this, 'value-changed', {
-			detail: { value: this.value }
-		});
-	}
-
 	emitValueChange() {
 		this.rb.events.emit(this, 'value-changed', {
 			detail: { value: this.value }
@@ -65,22 +59,18 @@ export class RbCheckboxes extends FormControl(RbBase()) {
 	 *****************/
 	async _onchange(item, index, evt) { // :void
 		const checked = evt.target.value;
-
 		if (checked) {
 			if (!this.value.length)
 				this.value = [].concat(item);
 			else
 				this.value.splice(index, 0, item);
 			// console.log('ADD:', this.value);
-			// this.emitValueChange()
-			await this.validate();
-			return;
+		} else {
+			const _index = this.value.indexOf(item);
+			this.value.splice(_index, 1);
+			// console.log('REMOVE:', this.value);
 		}
-
-		const _index = this.value.indexOf(item);
-		this.value.splice(_index, 1);
-		// console.log('REMOVE:', this.value);
-		// this.emitValueChange()
+		this.emitValueChange()
 		await this.validate();
 	}
 
