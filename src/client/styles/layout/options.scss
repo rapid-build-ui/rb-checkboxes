@@ -1,0 +1,26 @@
+/**********
+ * OPTIONS
+ **********/
+.form-control {
+	&.horizontal {
+		flex-direction: row;
+		.label {
+			margin-right: 15px;
+			margin-bottom: -12px;
+		}
+		.checkboxes {
+			flex-direction: row;
+			flex-wrap: wrap;
+		}
+	}
+	&.right {
+		justify-content: flex-end;
+		.checkboxes {
+			align-items: flex-end;
+			justify-content: flex-end;
+		}
+		&:not(.horizontal) {
+			align-items: flex-end;
+		}
+	}
+}

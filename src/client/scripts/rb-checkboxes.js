@@ -31,23 +31,47 @@ export class RbCheckboxes extends FormControl(RbBase()) {
 			stacked: props.boolean, // TODO: change default to unstacked
 			subtext: props.string,
 			toggle: props.boolean,
-			value: props.array,
 			data: Object.assign({}, props.array, {
 				deserialize(val) { // :array
-					if (Type.is.array(val)) return val;
-					if (!Type.is.string(val)) return val;
-					val = val.trim();
-					if (/^\[[^]*\]$/.test(val)) return JSON.parse(val);
-					return val;
+					val = Type.is.string(val) ? val.trim() : val;
+					return /^\[[^]*\]$/.test(val) ? JSON.parse(val) : [];
 				}
 			}),
+			value: Object.assign({}, props.array, {
+				deserialize(val) { // :array
+					val = Type.is.string(val) ? val.trim() : val;
+					return /^\[[^]*\]$/.test(val) ? JSON.parse(val) : [];
+				}
+			})
 		};
+	}
+
+	/* Observer
+	 ***********/
+	updating(prevProps) { // :void
+		// if (prevProps.value === this.value) return; // TODO: investigate
+		this.rb.events.emit(this, 'value-changed', {
+			detail: { value: this.value }
+		});
 	}
 
 	/* Event Handlers
 	 *****************/
-	_onclick(item, evt) { // :void (TODO: fix from firing twice)
-		console.log(item);
+	async _onchange(item, index, evt) { // :void
+		const checked = evt.target.value;
+		if (checked) {
+			if (!this.value.length)
+				this.value = [].concat(item);
+			else
+				this.value.splice(index, 0, item);
+			// console.log('ADD:', this.value);
+		} else {
+			const _index = this.value.indexOf(item);
+			this.value.splice(_index, 1);
+			// console.log('REMOVE:', this.value);
+		}
+		this.triggerUpdate();
+		await this.validate();
 	}
 
 	/* Template

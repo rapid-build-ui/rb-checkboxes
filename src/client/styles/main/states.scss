@@ -1,9 +1,0 @@
-/*********
- * STATES
- *********/
-&.invalid {
-	label,
-	.subtext {
-		color: mapGet($formControlColors, text, invalid, default);
-	}
-}

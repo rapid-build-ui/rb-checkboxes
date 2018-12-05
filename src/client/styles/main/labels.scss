@@ -1,8 +1,0 @@
-/*********
- * LABELS
- *********/
-.checkboxes-label {
-	margin-bottom: remy(7);
-	cursor: text;
-	color: mapGet($formControlColors, text, checkboxesLabel, default);
-}
