@@ -2,18 +2,28 @@
 	?disabled="${props.disabled}"
 	class="
 		form-control
-		${props.horizontal ? 'horizontal' : ''}
-		${props.inline ? 'inline' : ''}
 		${props.right ? 'right' : ''}
+		${props.label && 'with-label'}
+		${props.inline ? 'inline' : ''}
 		${props.stacked ? 'stacked' : ''}
 		${props._valid ? 'valid' : 'invalid'}
+		${props.horizontal ? 'horizontal' : ''}
+		${state.slots.popover ? 'with-popover' : ''}
 	">
-
-	${props.label
-		? html`<label class="label">${props.label}</label>`
-		: null
+	${props.label || state.slots.popover
+		? html`
+			<div class="label">
+				${state.slots.popover
+					? html`<slot name="popover"></slot>`
+					: null
+				}
+				${props.label
+					? html`<label>${props.label}</label>`
+					: null
+				}
+			</div>
+		`: null
 	}
-
 	<div class="checkboxes">
 		${props.data.map((item, i) => html`
 			<rb-checkbox
