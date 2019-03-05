@@ -1,3 +1,16 @@
+## [0.0.3](https://github.com/rapid-build-ui/rb-checkboxes/compare/v0.0.2...v0.0.3) (2019-03-05)
+
+
+### Dependencies
+
+* **bump deps:** ([8fc8283](https://github.com/rapid-build-ui/rb-checkboxes/commit/8fc8283))
+	* **form-control** to v0.0.7
+	* **rb-base** to v0.0.8
+	* **rb-checkbox** to v0.0.5
+	* **rb-popover** to v0.0.15
+
+
+
 ## [0.0.2](https://github.com/rapid-build-ui/rb-checkboxes/compare/v0.0.1...v0.0.2) (2019-02-25)
 
 
@@ -9,10 +22,10 @@
 ### Dependencies
 
 * **bump deps:** ([8677d6b](https://github.com/rapid-build-ui/rb-checkboxes/commit/8677d6b))
-	* **rb-base** to v0.0.7
-	* **rb-popover** to v0.0.14
-	* **rb-checkbox** to v0.0.4
 	* **form-control** to v0.0.6
+	* **rb-base** to v0.0.7
+	* **rb-checkbox** to v0.0.4
+	* **rb-popover** to v0.0.14
 
 
 
