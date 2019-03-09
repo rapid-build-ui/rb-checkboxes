@@ -14,7 +14,7 @@ export class RbCheckboxes extends FormControl(RbBase()) {
 	viewReady() { // :void
 		super.viewReady && super.viewReady();
 		Object.assign(this.rb.elms, {
-			focusElm:    this.shadowRoot.querySelector('rb-checkbox'),
+			focusElm:    this.shadowRoot.querySelector('rb-checkbox').rb.elms.focusElm,
 			formControl: this.shadowRoot.querySelector('input')
 		});
 		this._initSlotStates(); // see rb-base: private/mixins/slot.js
