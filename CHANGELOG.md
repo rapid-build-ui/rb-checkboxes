@@ -1,3 +1,21 @@
+## [0.0.4](https://github.com/rapid-build-ui/rb-checkboxes/compare/v0.0.3...v0.0.4) (2019-05-09)
+
+
+### Bug Fixes
+
+* **setting focus:** to first checkbox on form submit ([a340d07](https://github.com/rapid-build-ui/rb-checkboxes/commit/a340d07))
+
+
+### Dependencies
+
+* **bump deps:** ([6a5c833](https://github.com/rapid-build-ui/rb-checkboxes/commit/6a5c833))
+	* **form-control** to v0.0.8
+	* **rb-base** to v0.0.9
+	* **rb-checkbox** to v0.0.6
+	* **rb-popover** to v0.0.16
+
+
+
 ## [0.0.3](https://github.com/rapid-build-ui/rb-checkboxes/compare/v0.0.2...v0.0.3) (2019-03-05)
 
 
