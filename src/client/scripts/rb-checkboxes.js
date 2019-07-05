@@ -11,6 +11,10 @@ import '../../rb-popover/scripts/rb-popover.js';
 export class RbCheckboxes extends FormControl(RbBase()) {
 	/* Lifecycle
 	 ************/
+	constructor() {
+		super();
+		this.version = '0.0.4';
+	}
 	viewReady() { // :void
 		super.viewReady && super.viewReady();
 		Object.assign(this.rb.formControl, {
