@@ -1,3 +1,21 @@
+## [0.0.5](https://github.com/rapid-build-ui/rb-checkboxes/compare/v0.0.4...v0.0.5) (2019-07-05)
+
+
+### Features
+
+* **version:** add to component properties accessible via this.version ([be297cf](https://github.com/rapid-build-ui/rb-checkboxes/commit/be297cf))
+
+
+### Dependencies
+
+* **bump deps:** ([31046a2](https://github.com/rapid-build-ui/rb-checkboxes/commit/31046a2))
+	* **form-control** to v0.0.9
+	* **rb-base** to v0.0.10
+	* **rb-checkbox** to v0.0.7
+	* **rb-popover** to v0.0.17
+
+
+
 ## [0.0.4](https://github.com/rapid-build-ui/rb-checkboxes/compare/v0.0.3...v0.0.4) (2019-05-09)
 
 
