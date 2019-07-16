@@ -13,7 +13,7 @@ export class RbCheckboxes extends FormControl(RbBase()) {
 	 ************/
 	constructor() {
 		super();
-		this.version = '0.0.6';
+		this.version = '0.0.7';
 	}
 	viewReady() { // :void
 		super.viewReady && super.viewReady();

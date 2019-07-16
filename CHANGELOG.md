@@ -1,3 +1,12 @@
+## [0.0.7](https://github.com/rapid-build-ui/rb-checkboxes/compare/v0.0.6...v0.0.7) (2019-07-16)
+
+
+### Dependencies
+
+* **bump:** deps rb ([7368eed](https://github.com/rapid-build-ui/rb-checkboxes/commit/7368eed))
+
+
+
 ## [0.0.6](https://github.com/rapid-build-ui/rb-checkboxes/compare/v0.0.5...v0.0.6) (2019-07-12)
 
 
